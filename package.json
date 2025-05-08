@@ -27,7 +27,7 @@
   },
   "manifest": {
     "host_permissions": [
-      "https://*/*"
+      "https://docs.google.com/*"
     ],
     "manifest_version": 3,
     "permissions": [

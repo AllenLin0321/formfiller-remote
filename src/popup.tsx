@@ -1,5 +1,7 @@
 import { useEffect } from "react"
 
+import "~style.css"
+
 const Popup = () => {
   useEffect(() => {
     // 找出當前分頁並替換成 ChatGPT
