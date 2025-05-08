@@ -31,7 +31,8 @@
     ],
     "manifest_version": 3,
     "permissions": [
-      "tabs"
+      "tabs",
+      "storage"
     ],
     "action": {
       "default_popup": "popup.html"
