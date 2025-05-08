@@ -28,6 +28,13 @@
   "manifest": {
     "host_permissions": [
       "https://*/*"
-    ]
+    ],
+    "manifest_version": 3,
+    "permissions": [
+      "tabs"
+    ],
+    "action": {
+      "default_popup": "popup.html"
+    }
   }
 }
