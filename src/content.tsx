@@ -2,7 +2,7 @@ import cssText from "data-text:~style.css"
 import { useEffect, useMemo, useState } from "react"
 
 export const config = {
-  matches: ["https://docs.google.com/*"],
+  matches: ["https://docs.google.com/forms/*"],
   all_frames: false,
   run_at: "document_idle"
 }
@@ -55,6 +55,7 @@ const PlasmoOverlay = () => {
   const [timeOption, setTimeOption] = useState<
     "morning" | "afternoon" | "full"
   >("morning")
+
   const [ranges, setRanges] = useState({
     morning: { start: "09:00", end: "12:00" },
     afternoon: { start: "13:00", end: "17:00" },
@@ -162,6 +163,15 @@ const PlasmoOverlay = () => {
           {ranges[timeOption].start} - {ranges[timeOption].end}
         </div>
       </div>
+      <div className="plasmo-flex plasmo-justify-between plasmo-mt-4">
+        <button
+          onClick={() => {
+            // TODO: Add logic for applying settings
+          }}
+          className="plasmo-bg-blue-600 plasmo-text-white plasmo-px-4 plasmo-py-2 plasmo-rounded">
+          套用
+        </button>
+      </div>
     </div>
   )
 
@@ -204,43 +214,6 @@ const PlasmoOverlay = () => {
           ))}
         </div>
       </div>
-      <div>
-        <label className="plasmo-block plasmo-text-sm plasmo-font-medium">
-          請假時段
-        </label>
-        <div className="plasmo-space-y-2 plasmo-mt-1">
-          {periods.map(([opt, label]) => (
-            <div
-              key={opt}
-              className="plasmo-flex plasmo-items-center plasmo-space-x-2">
-              <span className="plasmo-w-16 plasmo-text-sm">{label}</span>
-              <input
-                type="time"
-                value={ranges[opt].start}
-                onChange={(e) =>
-                  setRanges((r) => ({
-                    ...r,
-                    [opt]: { ...r[opt], start: e.currentTarget.value }
-                  }))
-                }
-                className="plasmo-border plasmo-rounded plasmo-p-1"
-              />
-              <span className="plasmo-text-sm">至</span>
-              <input
-                type="time"
-                value={ranges[opt].end}
-                onChange={(e) =>
-                  setRanges((r) => ({
-                    ...r,
-                    [opt]: { ...r[opt], end: e.currentTarget.value }
-                  }))
-                }
-                className="plasmo-border plasmo-rounded plasmo-p-1"
-              />
-            </div>
-          ))}
-        </div>
-      </div>
       {saved && (
         <div className="plasmo-text-green-600 plasmo-text-sm">儲存成功</div>
       )}
@@ -255,7 +228,7 @@ const PlasmoOverlay = () => {
   )
 
   return (
-    <div className="plasmo-fixed plasmo-top-4 plasmo-right-4 plasmo-z-[9999] plasmo-w-96 plasmo-bg-white plasmo-rounded-lg plasmo-shadow-lg plasmo-p-4">
+    <div className="plasmo-fixed plasmo-top-4 plasmo-right-4 plasmo-z-[9999] plasmo-w-96 plasmo-bg-white plasmo-rounded-lg plasmo-shadow-lg plasmo-p-4 plasmo-font-sans">
       <div className="plasmo-flex plasmo-border-b plasmo-mb-4">
         {(["view", "settings"] as const).map((t) => (
           <button
